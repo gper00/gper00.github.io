@@ -1,0 +1,143 @@
+SISTEM DESAIN - WEBSITE PERSONAL [NAMA ANDA]
+Versi: 1.0
+Tanggal: 15 Juni 2025
+
+---------------------------------
+--- 1. FILOSOFI DESAIN (PRINSIP UTAMA) ---
+---------------------------------
+
+Tujuan utama desain ini adalah menciptakan pengalaman yang "kalem, bersih, dan profesional" dengan sentuhan "developer feel" yang kuat.
+
+- **Fokus pada Konten:** Layout didesain agar tidak mengganggu, menempatkan tulisan dan proyek sebagai pusat perhatian.
+- **Minimalisme Fungsional:** Setiap elemen memiliki tujuan yang jelas. Tidak ada dekorasi yang tidak perlu. "Less is more".
+- **Hirarki Visual yang Jelas:** Pengguna harus bisa dengan mudah membedakan antara judul, sub-judul, dan teks utama melalui penggunaan ukuran, ketebalan, dan spasi font.
+- **Penggunaan Whitespace (Ruang Kosong):** Ruang kosong digunakan secara luas untuk memberikan "napas" pada konten dan menciptakan kesan yang rapi dan tidak sesak.
+
+
+---------------------------------
+--- 2. LAYOUT & SPASI (SPACING) ---
+---------------------------------
+
+Struktur halaman dibangun di atas sistem grid dan spasi yang konsisten.
+
+- **Container Utama Halaman:**
+  - Lebar maksimum: `max-w-6xl`
+  - Padding horizontal: `px-6`
+  - Contoh: `<main class="container mx-auto max-w-6xl px-6">`
+
+- **Container Konten Teks (Artikel):**
+  - Lebar maksimum: `max-w-4xl`
+  - Untuk menjaga kenyamanan membaca, kolom teks utama tidak dibuat terlalu lebar.
+  - Contoh: `<div class="container mx-auto max-w-4xl px-6 article-content">`
+
+- **Container Gambar Imersif:**
+  - Lebar maksimum: `max-w-6xl` (lebih lebar dari teks)
+  - Untuk menciptakan efek sinematik di halaman detail blog.
+  - Contoh: `<figure class="container mx-auto max-w-6xl px-6">`
+
+- **Ritme Vertikal:**
+  - Jarak antar bagian utama (section): `py-20` atau `py-24`
+  - Jarak ke footer: `mt-20`
+  - Ini menciptakan jeda yang konsisten saat pengguna scroll.
+
+
+---------------------------------
+--- 3. PALET WARNA (COLOR PALETTE) ---
+---------------------------------
+
+Palet warna didominasi oleh warna netral untuk menciptakan kesan kalem dan profesional.
+
+- **Latar Belakang Utama (Background):**
+  - Nama: Off-White
+  - Class: `bg-gray-50` (`#f9fafb`)
+
+- **Teks Utama (Headings):**
+  - Nama: Jet Black
+  - Class: `text-slate-900`
+
+- **Teks Paragraf (Body):**
+  - Nama: Dark Gray
+  - Class: `text-slate-800` atau `text-gray-700`
+
+- **Teks Sekunder (Meta, Caption):**
+  - Nama: Medium Gray
+  - Class: `text-slate-600` atau `text-slate-500`
+
+- **Aksen & Interaktif (Hover Link):**
+  - Nama: Dark Amber (untuk beberapa hover) atau Slate (default)
+  - Class: `hover:text-amber-800` atau `hover:text-slate-900`
+
+- **Borders & Garis Pemisah:**
+  - Nama: Light Gray
+  - Class: `border-slate-200`
+
+- **Latar Belakang Tombol Utama:**
+  - Nama: Solid Black
+  - Class: `bg-slate-900`
+
+
+---------------------------------
+--- 4. TIPOGRAFI (TYPOGRAPHY) ---
+---------------------------------
+
+Tipografi adalah elemen kunci. Kita menggunakan satu keluarga font utama untuk konsistensi.
+
+- **Font Keluarga Utama (Sans-serif):**
+  - Nama: Poppins
+  - Penggunaan: Judul, paragraf, UI, hampir semua teks.
+
+- **Font Keluarga Kode (Monospace):**
+  - Nama: JetBrains Mono
+  - Penggunaan: Khusus untuk blok kode (`<pre><code>`).
+
+- **Skala & Hirarki Tipografi:**
+  - **H1 (Judul Utama Halaman):** `text-4xl` atau `text-5xl`, `font-bold`, `tracking-tight`
+  - **H2 (Judul Bagian):** `text-3xl`, `font-bold`
+  - **H3 (Judul Kartu/Item):** `text-xl`, `font-semibold`
+  - **Paragraf (Body):** `text-base` atau `text-lg` (untuk artikel), `leading-relaxed` atau `line-height: 1.75`
+  - **Teks Meta (Kategori, Tanggal):** `text-sm`, `font-medium`, `text-slate-500`
+
+
+---------------------------------
+--- 5. KOMPONEN (COMPONENTS) ---
+---------------------------------
+
+Elemen UI yang dapat digunakan kembali di seluruh situs.
+
+- **Header:**
+  - Style: `fixed top-0`, transparan saat di puncak.
+  - Efek Scroll: Diberi latar `bg-white/80`, `backdrop-blur-lg`, dan `shadow-sm` saat scroll ke bawah.
+
+- **Tombol (Buttons):**
+  - **Primer:** Latar solid, teks putih. Contoh: `<a class="bg-slate-900 text-white ...">`
+  - **Sekunder:** Latar putih, border tipis. Contoh: `<a class="bg-white ring-1 ring-slate-200 ...">`
+
+- **Kartu (Cards):**
+  - **Kartu Blog/Proyek:** Latar `bg-white`, `border`, `rounded-xl`, dengan efek `hover:shadow-xl` dan `hover:-translate-y-1`.
+  - **Struktur Kartu Blog:** Gambar di atas, diikuti kategori (jika ada), judul (`h3`), dan deskripsi singkat (opsional).
+  - **Struktur Kartu Proyek:** Lebih detail, menyertakan deskripsi, daftar "pills" teknologi, dan link ke GitHub/Demo.
+
+- **Formulir (Forms):**
+  - **Input & Textarea:** Border `border-slate-300`, `rounded-lg`, `shadow-sm`.
+  - **Fokus:** Efek `focus:ring-slate-500` dan `focus:border-slate-500`.
+  - **Select (Dropdown):** Didesain kustom dengan menyembunyikan panah asli (`appearance-none`) dan menambahkan ikon SVG.
+
+- **Blok Kode:**
+  - Style: Meniru editor modern.
+  - Wrapper: `div` dengan `bg-slate-900`, `rounded-xl`, `shadow-lg`.
+  - Header Kode: `div` dengan `bg-slate-800/80` berisi nama bahasa dan tombol "Salin".
+  - Font: `JetBrains Mono`.
+
+---------------------------------
+--- 6. INTERAKTIVITAS & ANIMASI ---
+---------------------------------
+
+- **Hover States:**
+  - Kartu: Mengangkat sedikit (`-translate-y-1`) dan bayangan membesar (`shadow-xl`).
+  - Link Teks: Warna berubah menjadi lebih gelap atau warna aksen.
+  - Semua interaksi menggunakan `transition-all` dan `duration-300` untuk pergerakan yang halus.
+
+- **Animasi Saat Scroll:**
+  - Nama: `fade-in-up`
+  - Efek: Elemen muncul dari bawah dengan transisi opacity saat masuk ke viewport.
+  - Implementasi: Menggunakan `IntersectionObserver` di JavaScript.

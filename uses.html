@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Saya (Uses) | [Nama Anda]</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f9fafb; /* bg-gray-50 */
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000),
+                        transform 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+        }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-10 transition-all duration-300">
+        <div class="container mx-auto max-w-6xl px-6">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="text-xl font-bold text-slate-900">[Nama Anda].</a>
+                <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="index.html" class="text-slate-600 hover:text-slate-900 transition-colors">Beranda</a>
+                    <a href="blog.html" class="text-slate-600 hover:text-slate-900 transition-colors">Blog</a>
+                    <a href="projects.html" class="text-slate-600 hover:text-slate-900 transition-colors">Proyek</a>
+                    <a href="uses.html" class="text-slate-900 font-semibold transition-colors">Uses</a>
+                    <a href="about.html" class="text-slate-600 hover:text-slate-900 transition-colors">Tentang</a>
+                </nav>
+                 <button class="md:hidden text-slate-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-4xl px-6 pt-32 pb-20">
+
+        <section class="pb-12">
+            <div class="fade-in-up">
+                <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Setup Saya</h1>
+                <p class="max-w-2xl mt-4 text-lg text-slate-600">
+                    Banyak yang bertanya tentang perangkat dan perangkat lunak yang saya gunakan dalam pekerjaan sehari-hari. Ini adalah daftar lengkap dari semua yang saya gunakan dan sukai. Daftar ini akan terus saya perbarui seiring waktu.
+                </p>
+            </div>
+        </section>
+
+        <div class="fade-in-up" style="transition-delay: 200ms;">
+
+            <section class="mt-12">
+                <h2 class="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-4">Peralatan Koding</h2>
+                <ul class="mt-8 space-y-8">
+                    <li class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                        <h3 class="w-full sm:w-1/3 font-semibold text-slate-800">Editor Kode</h3>
+                        <div class="w-full sm:w-2/3">
+                            <p class="font-semibold">Visual Studio Code</p>
+                            <p class="text-slate-600 text-sm mt-1">Editor utama saya selama bertahun-tahun. Ekosistem ekstensinya tak terkalahkan. Ringan, cepat, dan bisa dikustomisasi untuk apa saja.</p>
+                        </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                        <h3 class="w-full sm:w-1/3 font-semibold text-slate-800">Tema VS Code</h3>
+                        <div class="w-full sm:w-2/3">
+                            <p class="font-semibold">One Dark Pro</p>
+                            <p class="text-slate-600 text-sm mt-1">Tema gelap yang nyaman di mata dengan kontras warna yang pas. Saya selalu kembali ke tema ini.</p>
+                        </div>
+                    </li>
+                     <li class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                        <h3 class="w-full sm:w-1/3 font-semibold text-slate-800">Font Koding</h3>
+                        <div class="w-full sm:w-2/3">
+                            <p class="font-semibold">JetBrains Mono</p>
+                            <p class="text-slate-600 text-sm mt-1">Font yang dirancang khusus untuk developer. Sangat mudah dibaca dan memiliki *ligatures* yang fungsional.</p>
+                        </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                        <h3 class="w-full sm:w-1/3 font-semibold text-slate-800">Terminal</h3>
+                        <div class="w-full sm:w-2/3">
+                            <p class="font-semibold">iTerm2 (macOS)</p>
+                            <p class="text-slate-600 text-sm mt-1">Alternatif terminal bawaan macOS yang jauh lebih kuat. Fitur split panes, profil, dan kustomisasi warnanya sangat membantu.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="mt-16">
+                <h2 class="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-4">Perangkat Keras</h2>
+                <ul class="mt-8 space-y-8">
+                    <li class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                        <h3 class="w-full sm:w-1/3 font-semibold text-slate-800">Komputer Utama</h3>
+                        <div class="w-full sm:w-2/3">
+                            <p class="font-semibold">MacBook Pro 14" (M1 Pro, 16GB RAM)</p>
+                            <p class="text-slate-600 text-sm mt-1">Mesin yang sangat bisa diandalkan. Performanya cepat untuk kompilasi kode dan daya tahan baterainya luar biasa.</p>
+                        </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                        <h3 class="w-full sm:w-1/3 font-semibold text-slate-800">Monitor</h3>
+                        <div class="w-full sm:w-2/3">
+                            <p class="font-semibold">Dell UltraSharp U2721DE (27")</p>
+                            <p class="text-slate-600 text-sm mt-1">Monitor 2K (QHD) dengan reproduksi warna yang akurat dan koneksi USB-C, jadi saya hanya butuh satu kabel untuk display dan mengisi daya laptop.</p>
+                        </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                        <h3 class="w-full sm:w-1/3 font-semibold text-slate-800">Keyboard</h3>
+                        <div class="w-full sm:w-2/3">
+                            <p class="font-semibold">Keychron K2 (Mechanical)</p>
+                            <p class="text-slate-600 text-sm mt-1">Pengalaman mengetik yang memuaskan. Ukuran 75% adalah kompromi yang pas antara fungsionalitas dan minimalisme di atas meja.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+             <section class="mt-16">
+                <h2 class="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-4">Aplikasi & Layanan</h2>
+                 <ul class="mt-8 space-y-8">
+                    <li class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                        <h3 class="w-full sm:w-1/3 font-semibold text-slate-800">Browser</h3>
+                        <div class="w-full sm:w-2/3">
+                            <p class="font-semibold">Arc Browser</p>
+                            <p class="text-slate-600 text-sm mt-1">Sebuah pendekatan baru pada browser web. Manajemen tab dan 'spaces'-nya mengubah cara saya bekerja.</p>
+                        </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                        <h3 class="w-full sm:w-1/3 font-semibold text-slate-800">Desain UI/UX</h3>
+                        <div class="w-full sm:w-2/3">
+                            <p class="font-semibold">Figma</p>
+                            <p class="text-slate-600 text-sm mt-1">Standar industri untuk desain antarmuka. Saya gunakan untuk membuat mockup, prototipe, hingga aset grafis untuk website ini.</p>
+                        </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                        <h3 class="w-full sm:w-1/3 font-semibold text-slate-800">Catatan & Produktivitas</h3>
+                        <div class="w-full sm:w-2/3">
+                            <p class="font-semibold">Notion</p>
+                            <p class="text-slate-600 text-sm mt-1">Otak kedua saya. Semua ide tulisan, manajemen proyek, hingga catatan personal, semuanya tersimpan di sini.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="mt-20 border-t border-slate-200">
+        <div class="container mx-auto max-w-6xl px-6 py-10"><div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left"><p class="text-sm text-slate-500">&copy; 2025 [Nama Anda]. Dibuat dengan hati dan kode di Mataram.</p><div class="flex gap-x-6 mt-4 md:mt-0"><a href="#" class="text-sm text-slate-500 hover:text-slate-900">GitHub</a><a href="#" class="text-sm text-slate-500 hover:text-slate-900">LinkedIn</a><a href="#" class="text-sm text-slate-500 hover:text-slate-900">Twitter</a></div></div></div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Skrip untuk animasi fade-in
+            const animatedElements = document.querySelectorAll('.fade-in-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(element => { observer.observe(element); });
+
+            // Skrip untuk efek header saat scroll
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    header.classList.add('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
+                } else {
+                    header.classList.remove('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
