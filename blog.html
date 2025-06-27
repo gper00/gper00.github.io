@@ -1,68 +1,27 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | [Nama Anda]</title>
+    <title>Blog | Umam Alfarizi</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: #f9fafb; /* bg-gray-50 */
-        }
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000),
-                        transform 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000);
-        }
-        .fade-in-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Styling untuk Tampilan List */
-        .list-view-card {
-            display: flex;
-            flex-direction: column; /* default untuk mobile */
-            gap: 1.5rem; /* 24px */
-            padding: 1.5rem; /* 24px */
-            background-color: white;
-            border-radius: 0.75rem; /* 12px */
-            border: 1px solid #e5e7eb; /* slate-200 */
-            transition: all 0.3s;
-        }
-        .list-view-card:hover {
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            transform: translateY(-4px);
-        }
-
-        @media (min-width: 768px) { /* md */
-            .list-view-card {
-                flex-direction: row;
-                align-items: center;
-            }
-            .list-view-card .thumbnail-wrapper {
-                flex-shrink: 0;
-                width: 33.333333%; /* w-1/3 */
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body class="text-slate-800">
 
     <header id="main-header" class="fixed top-0 left-0 w-full z-10 transition-all duration-300">
         <div class="container mx-auto max-w-6xl px-6">
             <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="text-xl font-bold text-slate-900">[Nama Anda].</a>
+                <a href="index.html" class="text-xl font-bold text-slate-900">Umam Alfarizi.</a>
                 <nav class="hidden md:flex space-x-8 text-sm font-medium">
                     <a href="index.html" class="text-slate-600 hover:text-slate-900 transition-colors">Beranda</a>
                     <a href="blog.html" class="text-slate-900 font-semibold transition-colors">Blog</a>
@@ -70,8 +29,11 @@
                     <a href="uses.html" class="text-slate-600 hover:text-slate-900 transition-colors">Uses</a>
                     <a href="about.html" class="text-slate-600 hover:text-slate-900 transition-colors">Tentang</a>
                 </nav>
-                 <button class="md:hidden text-slate-900">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <button class="md:hidden text-slate-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
                 </button>
             </div>
         </div>
@@ -83,20 +45,27 @@
             <div class="fade-in-up">
                 <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Dari Blog Saya</h1>
                 <p class="max-w-2xl mx-auto mt-4 text-lg text-slate-600">
-                    Kumpulan pemikiran, cerita, dan tutorial yang saya tulis. Selamat membaca dan semoga menemukan sesuatu yang bermanfaat.
+                    Kumpulan pemikiran, cerita, dan tutorial yang saya tulis. Selamat membaca dan semoga menemukan
+                    sesuatu yang bermanfaat.
                 </p>
             </div>
         </section>
 
         <section class="mb-16 fade-in-up" style="transition-delay: 200ms;">
-            <a href="blog-detail.html" class="group block md:flex gap-8 items-center bg-white p-6 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <a href="blog-detail.html"
+                class="group block md:flex gap-8 items-center bg-white p-6 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
                 <div class="w-full md:w-1/2 overflow-hidden rounded-lg mb-4 md:mb-0">
-                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1965&auto=format&fit=crop" alt="Artikel Unggulan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1965&auto=format&fit=crop"
+                        alt="Artikel Unggulan"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="w-full md:w-1/2">
-                    <span class="text-sm font-medium text-amber-600">★ ARTIKEL UNGGULAN</span>
-                    <h2 class="mt-2 text-2xl md:text-3xl font-bold text-slate-900 group-hover:text-slate-700">Membangun Portofolio yang Menarik Perhatian Rekruter</h2>
-                    <p class="mt-3 text-slate-600">Portofolio bukan hanya galeri proyek, tapi cerita tentang siapa Anda sebagai developer. Pelajari cara menyusun portofolio yang tidak hanya teknis, tapi juga naratif.</p>
+                    <span class="text-sm font-medium text-amber-600">★ ARTIKEL TERBARU</span>
+                    <h2 class="mt-2 text-2xl md:text-3xl font-bold text-slate-900 group-hover:text-slate-700">Membangun
+                        Portofolio yang Menarik Perhatian Rekruter</h2>
+                    <p class="mt-3 text-slate-600">Portofolio bukan hanya galeri proyek, tapi cerita tentang siapa Anda
+                        sebagai developer. Pelajari cara menyusun portofolio yang tidak hanya teknis, tapi juga naratif.
+                    </p>
                     <div class="mt-4 text-sm font-semibold text-slate-800 group-hover:text-slate-500 transition-colors">
                         Baca selengkapnya &rarr;
                     </div>
@@ -104,126 +73,80 @@
             </a>
         </section>
 
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 fade-in-up" style="transition-delay: 400ms;">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 fade-in-up"
+            style="transition-delay: 400ms;">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <select id="sort-by" class="appearance-none w-full bg-white text-sm border-slate-300 rounded-lg shadow-sm focus:ring-slate-500 focus:border-slate-500 pl-4 pr-10 py-2.5 transition">
+                    <select id="sort-by"
+                        class="appearance-none w-full bg-white text-sm border-slate-300 rounded-lg shadow-sm focus:ring-slate-500 focus:border-slate-500 pl-4 pr-10 py-2.5 transition">
                         <option>Urutkan: Terbaru</option>
                         <option>Urutkan: Terlama</option>
-                        <option>Urutkan: Terpopuler</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-400">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                            <path
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                        </svg>
                     </div>
                 </div>
 
                 <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-lg">
                     <button id="grid-view-btn" class="active p-2 rounded-md text-slate-800 bg-white shadow-sm">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                            </path>
+                        </svg>
                     </button>
                     <button id="list-view-btn" class="p-2 rounded-md text-slate-500 hover:bg-white hover:shadow-sm">
-                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
             <div class="relative w-full md:w-auto">
-                <input type="search" placeholder="Cari artikel..." class="w-full md:w-64 pl-4 pr-10 py-2.5 text-sm border-slate-300 rounded-lg shadow-sm focus:ring-slate-500 focus:border-slate-500">
-                <svg class="w-4 h-4 text-slate-400 absolute top-1/2 right-3 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <input type="search" placeholder="Cari artikel..."
+                    class="w-full md:w-64 pl-4 pr-10 py-2.5 text-sm border-slate-300 rounded-lg shadow-sm focus:ring-slate-500 focus:border-slate-500">
+                <svg class="w-4 h-4 text-slate-400 absolute top-1/2 right-3 -translate-y-1/2" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
             </div>
         </div>
 
-        <div id="articles-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in-up" style="transition-delay: 600ms;">
-            <a href="#" class="group block">
-                <div class="thumbnail-wrapper overflow-hidden rounded-xl mb-4"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop" alt="Gambar" class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300"></div>
-                <div class="content-wrapper"><span class="text-sm font-medium text-slate-500">TEKNOLOGI</span><h3 class="mt-1 text-xl font-semibold text-slate-900 group-hover:text-slate-700">Pengenalan Tailwind CSS untuk Pemula</h3><p class="text-slate-600 text-sm mt-2 hidden">Cuplikan singkat tentang isi artikel ini untuk memberikan gambaran...</p></div>
-            </a>
-            <a href="#" class="group block">
-                <div class="thumbnail-wrapper overflow-hidden rounded-xl mb-4">
-                    <div class="w-full h-52 flex items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200">
-                        <svg class="w-12 h-12 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v11.494m-5.253-7.494H17.25M3.375 6.168h17.25m-17.25 11.664h17.25"></path></svg>
-                    </div>
-                </div>
-                <div class="content-wrapper"><span class="text-sm font-medium text-slate-500">GAYA HIDUP</span><h3 class="mt-1 text-xl font-semibold text-slate-900 group-hover:text-slate-700">Seni 'Slow Living' di Dunia yang Serba Cepat</h3><p class="text-slate-600 text-sm mt-2 hidden">Cuplikan singkat tentang isi artikel ini untuk memberikan gambaran...</p></div>
-            </a>
-            <a href="#" class="group block"><div class="thumbnail-wrapper overflow-hidden rounded-xl mb-4"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop" alt="Gambar" class="w-full h-52 object-cover group-hover:scale-105 transition-transform"></div><div class="content-wrapper"><span class="text-sm font-medium text-slate-500">PERJALANAN</span><h3 class="mt-1 text-xl font-semibold text-slate-900">Menemukan Ketenangan di Tepi Danau</h3><p class="text-slate-600 text-sm mt-2 hidden">Cuplikan singkat tentang isi artikel ini...</p></div></a>
-            <a href="#" class="group block"><div class="thumbnail-wrapper overflow-hidden rounded-xl mb-4"><div class="w-full h-52 flex items-center justify-center bg-gradient-to-br from-rose-50 to-rose-100"><svg class="w-12 h-12 text-rose-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"></path></svg></div></div><div class="content-wrapper"><span class="text-sm font-medium text-slate-500">OPINI</span><h3 class="mt-1 text-xl font-semibold text-slate-900">Pentingnya Empati dalam Desain Produk</h3><p class="text-slate-600 text-sm mt-2 hidden">Cuplikan singkat tentang isi artikel ini...</p></div></a>
-            <a href="#" class="group block"><div class="thumbnail-wrapper overflow-hidden rounded-xl mb-4"><img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop" alt="Gambar" class="w-full h-52 object-cover group-hover:scale-105 transition-transform"></div><div class="content-wrapper"><span class="text-sm font-medium text-slate-500">DESAIN</span><h3 class="mt-1 text-xl font-semibold text-slate-900">Prinsip Desain Minimalis untuk Website</h3><p class="text-slate-600 text-sm mt-2 hidden">Cuplikan singkat tentang isi artikel ini...</p></div></a>
-             <a href="#" class="group block"><div class="thumbnail-wrapper overflow-hidden rounded-xl mb-4"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop" alt="Gambar" class="w-full h-52 object-cover group-hover:scale-105 transition-transform"></div><div class="content-wrapper"><span class="text-sm font-medium text-slate-500">PRODUKTIVITAS</span><h3 class="mt-1 text-xl font-semibold text-slate-900">5 Cara Sederhana Memulai Hari Lebih Produktif</h3><p class="text-slate-600 text-sm mt-2 hidden">Cuplikan singkat tentang isi artikel ini...</p></div></a>
+        <div id="articles-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in-up"
+            style="transition-delay: 600ms;">
         </div>
 
-        <div class="flex justify-center mt-16">
+        <!-- <div class="flex justify-center mt-16">
             <nav aria-label="Pagination"><div class="flex items-center space-x-2 text-sm"><a href="#" class="px-4 py-2 rounded-lg text-slate-500 bg-slate-100 hover:bg-slate-200 opacity-50 cursor-not-allowed">&laquo; Sebelumnya</a><a href="#" aria-current="page" class="px-4 py-2 rounded-lg text-white bg-slate-900 border border-slate-900 font-medium">1</a><a href="#" class="px-4 py-2 rounded-lg text-slate-700 hover:bg-slate-200">2</a><a href="#" class="px-4 py-2 rounded-lg text-slate-700 hover:bg-slate-200">3</a><a href="#" class="px-4 py-2 rounded-lg text-slate-700 hover:bg-slate-200">Berikutnya &raquo;</a></div></nav>
-        </div>
+        </div> -->
     </main>
 
     <footer class="mt-20 border-t border-slate-200">
-        <div class="container mx-auto max-w-6xl px-6 py-10"><div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left"><p class="text-sm text-slate-500">&copy; 2025 [Nama Anda]. Dibuat dengan hati dan kode di Mataram.</p><div class="flex gap-x-6 mt-4 md:mt-0"><a href="#" class="text-sm text-slate-500 hover:text-slate-900">GitHub</a><a href="#" class="text-sm text-slate-500 hover:text-slate-900">LinkedIn</a><a href="#" class="text-sm text-slate-500 hover:text-slate-900">Twitter</a></div></div></div>
+        <div class="container mx-auto max-w-6xl px-6 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-sm text-slate-500">
+                    &copy; 2025 Umam Alfarizi.
+                </p>
+                <div class="flex gap-x-6 mt-4 md:mt-0">
+                    <a href="https://github.com/gper00" target="_blank"
+                        class="text-sm text-slate-500 hover:text-slate-900 transition-colors">GitHub</a>
+                    <a href="https://www.linkedin.com/in/umam-alfarizi/" target="_blank"
+                        class="text-sm text-slate-500 hover:text-slate-900 transition-colors">LinkedIn</a>
+                    <a href="https://facebook.com/umxmalfarizi" target="_blank"
+                        class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Facebook</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Skrip untuk animasi fade-in
-            const animatedElements = document.querySelectorAll('.fade-in-up');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            animatedElements.forEach(element => { observer.observe(element); });
-
-            // Skrip untuk efek header saat scroll
-            const header = document.getElementById('main-header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 10) {
-                    header.classList.add('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
-                } else {
-                    header.classList.remove('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
-                }
-            });
-
-            // Skrip untuk View Toggler (Grid/List)
-            const gridBtn = document.getElementById('grid-view-btn');
-            const listBtn = document.getElementById('list-view-btn');
-            const articlesContainer = document.getElementById('articles-container');
-            const articleCards = articlesContainer.querySelectorAll('.group');
-
-            gridBtn.addEventListener('click', () => {
-                // Atur tombol aktif
-                gridBtn.classList.add('active', 'bg-white', 'shadow-sm');
-                gridBtn.classList.remove('text-slate-500');
-                listBtn.classList.remove('active', 'bg-white', 'shadow-sm');
-                listBtn.classList.add('text-slate-500');
-
-                // Ubah kelas container
-                articlesContainer.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in-up is-visible';
-
-                // Ubah gaya kartu kembali ke grid
-                articleCards.forEach(card => {
-                    card.className = 'group block';
-                    card.querySelector('.content-wrapper p').classList.add('hidden');
-                });
-            });
-
-            listBtn.addEventListener('click', () => {
-                // Atur tombol aktif
-                listBtn.classList.add('active', 'bg-white', 'shadow-sm');
-                listBtn.classList.remove('text-slate-500');
-                gridBtn.classList.remove('active', 'bg-white', 'shadow-sm');
-                gridBtn.classList.add('text-slate-500');
-
-                // Ubah kelas container
-                articlesContainer.className = 'flex flex-col gap-6 fade-in-up is-visible';
-
-                // Ubah gaya kartu menjadi list
-                articleCards.forEach(card => {
-                    card.className = 'list-view-card';
-                    card.querySelector('.content-wrapper p').classList.remove('hidden');
-                });
-            });
-        });
-    </script>
+    <script src="js/main.js"></script>
+    <script src="js/blog-list.js"></script>
 </body>
+
 </html>

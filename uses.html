@@ -11,24 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: #f9fafb; /* bg-gray-50 */
-        }
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000),
-                        transform 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000);
-        }
-        .fade-in-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="text-slate-800">
 
@@ -155,33 +138,20 @@
     </main>
 
     <footer class="mt-20 border-t border-slate-200">
-        <div class="container mx-auto max-w-6xl px-6 py-10"><div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left"><p class="text-sm text-slate-500">&copy; 2025 [Nama Anda]. Dibuat dengan hati dan kode di Mataram.</p><div class="flex gap-x-6 mt-4 md:mt-0"><a href="#" class="text-sm text-slate-500 hover:text-slate-900">GitHub</a><a href="#" class="text-sm text-slate-500 hover:text-slate-900">LinkedIn</a><a href="#" class="text-sm text-slate-500 hover:text-slate-900">Twitter</a></div></div></div>
+        <div class="container mx-auto max-w-6xl px-6 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-sm text-slate-500">
+                    &copy; 2025 Umam Alfarizi.
+                </p>
+                <div class="flex gap-x-6 mt-4 md:mt-0">
+                    <a href="https://github.com/gper00" target="_blank" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">GitHub</a>
+                    <a href="https://www.linkedin.com/in/umam-alfarizi/" target="_blank" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">LinkedIn</a>
+                    <a href="https://facebook.com/umxmalfarizi" target="_blank" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Facebook</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Skrip untuk animasi fade-in
-            const animatedElements = document.querySelectorAll('.fade-in-up');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            animatedElements.forEach(element => { observer.observe(element); });
-
-            // Skrip untuk efek header saat scroll
-            const header = document.getElementById('main-header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 10) {
-                    header.classList.add('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
-                } else {
-                    header.classList.remove('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
-                }
-            });
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
