@@ -15,10 +15,54 @@ document.addEventListener("DOMContentLoaded", function() {
     const header = document.getElementById('main-header');
     if (header) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                header.classList.add('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
-            } else {
-                header.classList.remove('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
+            // if (window.scrollY > 10) {
+            //     header.classList.add('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
+            // } else {
+            //     header.classList.remove('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
+            // }
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    header.classList.add('bg-white/95', 'backdrop-blur-lg', 'shadow-sm');
+                } else {
+                    header.classList.remove('bg-white/95', 'backdrop-blur-lg', 'shadow-sm');
+                }
+            });
+        });
+    }
+
+    // Skrip menu responsif
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuBtn && mobileMenu) {
+        const body = document.body;
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('is-open');
+            body.classList.toggle('overflow-hidden');
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('is-open');
+            body.classList.remove('overflow-hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
             }
         });
     }

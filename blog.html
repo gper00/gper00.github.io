@@ -18,25 +18,40 @@
 
 <body class="text-slate-800">
 
-    <header id="main-header" class="fixed top-0 left-0 w-full z-10 transition-all duration-300">
-        <div class="container mx-auto max-w-6xl px-6">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="text-xl font-bold text-slate-900">Umam Alfarizi.</a>
-                <nav class="hidden md:flex space-x-8 text-sm font-medium">
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto max-w-6xl px-4 sm:px-6">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                <a href="index.html" class="text-lg sm:text-xl font-bold text-slate-900 z-50 relative">
+                    Umam Alfarizi.
+                </a>
+
+                <nav class="hidden md:flex space-x-6 lg:space-x-8 text-sm font-medium">
                     <a href="index.html" class="text-slate-600 hover:text-slate-900 transition-colors">Beranda</a>
-                    <a href="blog.html" class="text-slate-900 font-semibold transition-colors">Blog</a>
+                    <a href="blog.html" class="text-slate-900 font-semibold transition-colors hover:text-slate-700">Blog</a>
                     <a href="projects.html" class="text-slate-600 hover:text-slate-900 transition-colors">Proyek</a>
-                    <a href="uses.html" class="text-slate-600 hover:text-slate-900 transition-colors">Uses</a>
+                    <a href="uses.html" class="text-slate-600 hover:text-slate-900 transition-colors">Setup</a>
                     <a href="about.html" class="text-slate-600 hover:text-slate-900 transition-colors">Tentang</a>
                 </nav>
-                <button class="md:hidden text-slate-900">
+
+                <button id="mobile-menu-btn" class="md:hidden text-slate-900 z-50 relative p-2 -mr-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </button>
             </div>
         </div>
+
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 right-0 w-full h-full bg-white z-60">
+            <div class="flex flex-col justify-center items-center h-full space-y-8 text-lg font-medium">
+                <a href="index.html" class="text-slate-600 hover:text-slate-900 transition-colors mobile-menu-link">Beranda</a>
+                <a href="blog.html" class="text-slate-900 font-semibold transition-colors hover:text-slate-700 mobile-menu-link">Blog</a>
+                <a href="projects.html" class="text-slate-600 hover:text-slate-900 transition-colors mobile-menu-link">Proyek</a>
+                <a href="uses.html" class="text-slate-600 hover:text-slate-900 transition-colors mobile-menu-link">Setup</a>
+                <a href="about.html" class="text-slate-600 hover:text-slate-900 transition-colors mobile-menu-link">Tentang</a>
+            </div>
+        </div>
+
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden"></div>
     </header>
 
     <main class="container mx-auto max-w-6xl px-6 pt-32 pb-20">
