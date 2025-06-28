@@ -6,12 +6,14 @@
     let filteredBlogs = [];
     let currentSort = 'desc'; // 'desc' = terbaru, 'asc' = terlama
     let currentView = 'grid';
+    let recentPost = null;
 
     const container = document.getElementById('articles-container');
     const sortSelect = document.getElementById('sort-by');
     const searchInput = document.querySelector('input[type="search"]');
     const gridBtn = document.getElementById('grid-view-btn');
     const listBtn = document.getElementById('list-view-btn');
+    const recentPostContainer = document.getElementById('recent-post-container');
 
     // Helper: update URL query string
     function updateURL() {
@@ -78,6 +80,32 @@
         }
     }
 
+    function renderRecentPost() {
+        if (!recentPostContainer || !recentPost) return;
+        let thumbHtml = '';
+        if (recentPost.thumbnail) {
+            thumbHtml = `<img src="${recentPost.thumbnail}" alt="${recentPost.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />`;
+        } else {
+            thumbHtml = `<div class=\"w-full h-full flex items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl\"><svg class=\"w-12 h-12 text-stone-400\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 6.253v11.494m-5.253-7.494H17.25M3.375 6.168h17.25m-17.25 11.664h17.25\"></path></svg></div>`;
+        }
+        let category = recentPost.category ? recentPost.category.toUpperCase() : 'UMUM';
+        let html = `<a href="post-detail.html?slug=${recentPost.slug}"
+            class="group block md:flex gap-8 items-center bg-white p-6 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-full md:w-1/2 overflow-hidden rounded-lg mb-4 md:mb-0">
+                ${thumbHtml}
+            </div>
+            <div class="w-full md:w-1/2">
+                <span class="text-sm font-medium text-amber-600">★ ARTIKEL TERBARU</span>
+                <h2 class="mt-2 text-2xl md:text-3xl font-bold text-slate-900 group-hover:text-slate-700">${recentPost.title}</h2>
+                <p class="mt-3 text-slate-600">${recentPost.excerpt || ''}</p>
+                <div class="mt-4 text-sm font-semibold text-slate-800 group-hover:text-slate-500 transition-colors">
+                    Baca selengkapnya &rarr;
+                </div>
+            </div>
+        </a>`;
+        recentPostContainer.innerHTML = html;
+    }
+
     function renderBlogs() {
         if (!container) return;
         container.innerHTML = '';
@@ -140,9 +168,11 @@
         setTimeout(() => {
             const q = (searchInput?.value || '').toLowerCase();
             filteredBlogs = blogs.filter(blog =>
-                blog.title.toLowerCase().includes(q) ||
-                (blog.excerpt && blog.excerpt.toLowerCase().includes(q)) ||
-                (blog.tags && blog.tags.join(' ').toLowerCase().includes(q))
+                blog.slug !== (recentPost && recentPost.slug) && (
+                    blog.title.toLowerCase().includes(q) ||
+                    (blog.excerpt && blog.excerpt.toLowerCase().includes(q)) ||
+                    (blog.tags && blog.tags.join(' ').toLowerCase().includes(q))
+                )
             );
             sortBlogs();
             renderBlogs();
@@ -191,7 +221,11 @@
     fetch('data.json')
         .then(res => res.json())
         .then(data => {
-            blogs = data.filter(item => item.published);
+            // Ambil artikel terbaru
+            const sorted = data.filter(item => item.published).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            recentPost = sorted[0] || null;
+            renderRecentPost();
+            blogs = sorted.slice(1); // sisanya untuk daftar artikel
             filteredBlogs = [...blogs];
             loadFromURL();
             filterBlogs();
