@@ -81,19 +81,27 @@
     }
 
     function renderRecentPost() {
-        if (!recentPostContainer || !recentPost) return;
+        if (!recentPostContainer) {
+            return;
+        }
+        if (!recentPost) {
+            recentPostContainer.innerHTML = '<div class="text-center text-slate-500 py-8">Belum ada artikel terbaru.</div>';
+            return;
+        }
         let thumbHtml = '';
         if (recentPost.thumbnail) {
-            thumbHtml = `<img src="${recentPost.thumbnail}" alt="${recentPost.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />`;
+            thumbHtml = `<div class="aspect-[4/3] w-full overflow-hidden rounded-lg mb-4 md:mb-0">
+                <img src="${recentPost.thumbnail}" alt="${recentPost.title}" class="w-full h-full object-cover aspect-[4/3]" />
+            </div>`;
         } else {
-            thumbHtml = `<div class=\"w-full h-full flex items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl\"><svg class=\"w-12 h-12 text-stone-400\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 6.253v11.494m-5.253-7.494H17.25M3.375 6.168h17.25m-17.25 11.664h17.25\"></path></svg></div>`;
+            thumbHtml = `<div class="aspect-[4/3] w-full flex items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200 rounded-lg mb-4 md:mb-0 overflow-hidden">
+                <svg class="w-12 h-12 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v11.494m-5.253-7.494H17.25M3.375 6.168h17.25m-17.25 11.664h17.25"></path></svg>
+            </div>`;
         }
         let category = recentPost.category ? recentPost.category.toUpperCase() : 'UMUM';
         let html = `<a href="post-detail.html?slug=${recentPost.slug}"
             class="group block md:flex gap-8 items-center bg-white p-6 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
-            <div class="w-full md:w-1/2 overflow-hidden rounded-lg mb-4 md:mb-0">
-                ${thumbHtml}
-            </div>
+            <div class="w-full md:w-1/2">${thumbHtml}</div>
             <div class="w-full md:w-1/2">
                 <span class="text-sm font-medium text-amber-600">★ ARTIKEL TERBARU</span>
                 <h2 class="mt-2 text-2xl md:text-3xl font-bold text-slate-900 group-hover:text-slate-700">${recentPost.title}</h2>
@@ -222,7 +230,7 @@
         .then(res => res.json())
         .then(data => {
             // Ambil artikel terbaru
-            const sorted = data.filter(item => item.published).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            const sorted = data.filter(item => item.published).sort((a, b) => b.created_at - a.created_at);
             recentPost = sorted[0] || null;
             renderRecentPost();
             blogs = sorted.slice(1); // sisanya untuk daftar artikel
