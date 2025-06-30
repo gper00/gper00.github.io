@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const phrases = [
             "Haloo duniaaa!!!",
             "Saya Umam Alfarizi",
-            "Saya suka sepak bola #VicsaBarca🔵🔴",
+            "Saya suka sepak bola!! #VicsaBarca🔵🔴",
             "Saya juga senang jika diajak main catur♟️",
             "Saya ingin menjadi programmer handal namun enggan ngoding"
         ];
