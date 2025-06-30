@@ -86,11 +86,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const typingElement = document.getElementById('typing-effect');
     if (typingElement) {
         const phrases = [
-            "Hello world.",
-            "Suka membangun hal menarik dengan Javascript.",
-            "Sangat suka sepak bola #VicsaBarca.",
-            "Senang juga jika diajak main catur.",
-            "Ingin Menjadi Programmer Handal Namun Enggan Ngoding."
+            "Haloo duniaaa!!!",
+            "Saya Umam Alfarizi",
+            "Saya suka sepak bola #VicsaBarca🔵🔴",
+            "Saya juga senang jika diajak main catur♟️",
+            "Saya ingin menjadi programmer handal namun enggan ngoding"
         ];
         let phraseIndex = 0;
         let charIndex = 0;
@@ -257,4 +257,116 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
         }
     }
+
+    // INTEGRASI FORM KONTAK GOOGLE SHEET
+    const contactForm = document.forms['contact-form'];
+
+// Cek apakah form ada di halaman ini sebelum menjalankan skrip
+if (contactForm) {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzt54iJ4fwGDJEbR2ds7jIIXrlaaenojLz2-S-4sy1SGe5bv0LNviy_CYrV6Whw57k/exec';
+    const submitButton = document.getElementById('submit-button');
+    const originalButtonText = submitButton.innerHTML;
+
+    const alertSuccess = document.getElementById('alert-success');
+    const alertDanger = document.getElementById('alert-danger');
+
+    // Menggunakan ID HTML untuk mengambil elemen, bukan nama atribut
+    const inputs = {
+        name: document.getElementById('nama'), // id="nama"
+        email: document.getElementById('email'),
+        message: document.getElementById('pesan')  // id="pesan"
+    };
+
+    const validationMessages = {
+        name: document.getElementById('nama-validation'),
+        email: document.getElementById('email-validation'),
+        message: document.getElementById('pesan-validation')
+    };
+
+    // Fungsi untuk menampilkan error validasi
+    const showError = (field, message) => {
+        inputs[field].classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+        validationMessages[field].textContent = message;
+        validationMessages[field].classList.remove('hidden');
+    };
+
+    // Fungsi untuk membersihkan semua error validasi
+    const clearErrors = () => {
+        for (const field in inputs) {
+            inputs[field].classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+            validationMessages[field].classList.add('hidden');
+        }
+    };
+
+    // Fungsi untuk menampilkan notifikasi dan menyembunyikannya setelah 5 detik
+    const showAlert = (alertElement) => {
+         alertElement.classList.remove('hidden');
+         setTimeout(() => {
+            alertElement.classList.add('hidden');
+         }, 5000);
+    }
+
+    contactForm.addEventListener('submit', e => {
+        e.preventDefault();
+        clearErrors();
+        alertSuccess.classList.add('hidden');
+        alertDanger.classList.add('hidden');
+
+        // === VALIDASI LEBIH BAIK ===
+        let isValid = true;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const nameRegex = /^[a-zA-Z\s'-]+$/;
+
+        // Validasi Nama
+        if (!inputs.name.value.trim()) {
+            showError('name', 'Nama wajib diisi.');
+            isValid = false;
+        } else if (!nameRegex.test(inputs.name.value)) {
+            showError('name', 'Format nama tidak valid (hanya huruf dan spasi).');
+            isValid = false;
+        }
+
+        // Validasi Email
+        if (!inputs.email.value.trim()) {
+            showError('email', 'Email wajib diisi.');
+            isValid = false;
+        } else if (!emailRegex.test(inputs.email.value)) {
+            showError('email', 'Format email tidak valid.');
+            isValid = false;
+        }
+
+        // Validasi Pesan
+        if (!inputs.message.value.trim()) {
+            showError('message', 'Pesan wajib diisi.');
+            isValid = false;
+        } else if (inputs.message.value.trim().length < 10) {
+            showError('message', 'Pesan minimal 10 karakter.');
+            isValid = false;
+        }
+        // === AKHIR VALIDASI ===
+
+        if (!isValid) {
+            return;
+        }
+
+        // Proses Pengiriman
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Mengirim...';
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(contactForm) })
+            .then(response => {
+                console.log('Success!', response);
+                showAlert(alertSuccess);
+                contactForm.reset();
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                showAlert(alertDanger);
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            });
+    });
+}
 });
