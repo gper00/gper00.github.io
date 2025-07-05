@@ -1,4 +1,4 @@
-Halo! Pernahkah kamu merasa hidupmu seperti tidak karuan, tanpa arah? Seperti Bangun pagi, bekerja, pulang, lalu  terus menerus mengulanginya lagi keesokan hari. Apa terasa membosankan? Apa sebenarnya yang membuat hidup kita terasa seperti itu? Kita akan membahasnya lebih dalam.
+Halo kawan! Pernah nggak sih kamu ngerasa hidupmu seperti nggak karuan? Tanpa arah mungkin. Seperti bangun pagi, bekerja, pulang, lalu terus menerus mengulanginya lagi keesokan hari tanpa ada semacam perasaan mendapat sensasi pengalaman baru. Apa terasa membosankan? Apa sih sebenarnya yang membuat hidup kita terasa seperti itu? Yok kita bahas lebih dalam.
 
 ### **Mengapa Hidup Terasa Membosankan?**
 
@@ -44,5 +44,5 @@ Pada akhirnya, kebosanan bukanlah musuh yang harus dihindari, melainkan sinyal b
 
 ---
 
-Bagaimana menurutmu? Apakah kamu juga pernah merasakan hal yang sama? Jika kamu tertarik untuk mendalami topik ini lebih jauh, kamu bisa menyimak video berikut.  
+Bagaimana menurutmu? Apakah kamu juga pernah merasakan hal yang sama? Jika kamu tertarik untuk mendalami topik ini lebih jauh, kamu bisa menyimak video berikut.
 Referensi: [https://www.youtube.com/watch?v=Q-10s93Om9E](https://www.youtube.com/watch?v=Q-10s93Om9E)
