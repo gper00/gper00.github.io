@@ -2,6 +2,9 @@
 (function() {
     if (!window.location.pathname.endsWith('blog.html')) return;
 
+    const host = 'http://localhost:5000';
+    const endpoint = '/api/posts';
+
     let blogs = [];
     let filteredBlogs = [];
     let currentSort = 'desc'; // 'desc' = terbaru, 'asc' = terlama
@@ -99,7 +102,7 @@
             </div>`;
         }
         let category = recentPost.category ? recentPost.category.toUpperCase() : 'UMUM';
-        let html = `<a href="post-detail.html?slug=${recentPost.slug}"
+        let html = `<a href="post-detail.html?title=${recentPost.slug}"
             class="group block md:flex gap-8 items-center bg-white p-6 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
             <div class="w-full md:w-1/2">${thumbHtml}</div>
             <div class="w-full md:w-1/2">
@@ -131,7 +134,7 @@
             let category = blog.category ? blog.category.toUpperCase() : 'UMUM';
             let html = '';
             if (currentView === 'list') {
-                html = `<a href="post-detail.html?slug=${blog.slug}" class="list-view-card md:flex gap-6 group block">
+                html = `<a href="post-detail.html?title=${blog.slug}" class="list-view-card md:flex gap-6 group block">
   <div class="thumbnail-wrapper md:w-1/3 flex-shrink-0">
     <div class="aspect-video h-52 w-full overflow-hidden rounded-xl mb-4">
       ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="w-full h-full object-cover" />` : `<div class=\"w-full h-full flex items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl\"><svg class=\"w-12 h-12 text-stone-400\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 6.253v11.494m-5.253-7.494H17.25M3.375 6.168h17.25m-17.25 11.664h17.25\"></path></svg></div>`}
@@ -144,7 +147,7 @@
   </div>
 </a>`;
             } else {
-                html = `<a href="post-detail.html?slug=${blog.slug}" class="group block">
+                html = `<a href="post-detail.html?title=${blog.slug}" class="group block">
   <div class="thumbnail-wrapper">${thumbHtml}</div>
   <div class="content-wrapper">
     <span class="text-sm font-medium text-slate-500">${category}</span>
@@ -165,8 +168,10 @@
 
     function sortBlogs() {
         filteredBlogs.sort((a, b) => {
-            if (currentSort === 'desc') return b.created_at - a.created_at;
-            else return a.created_at - b.created_at;
+            const dateA = new Date(a.createdAt);
+            const dateB = new Date(b.createdAt);
+            if (currentSort === 'desc') return dateB - dateA;
+            else return dateA - dateB;
         });
     }
 
@@ -175,9 +180,20 @@
         updateURL();
         setTimeout(() => {
             const q = (searchInput?.value || '').toLowerCase();
+
+            // filteredBlogs = blogs.filter(blog =>
+            //     blog.slug !== (recentPost && recentPost.slug) && (
+            //         blog.title.toLowerCase().includes(q) ||
+            //         (blog.excerpt && blog.excerpt.toLowerCase().includes(q)) ||
+            //         (blog.tags && blog.tags.join(' ').toLowerCase().includes(q))
+            //     )
+            // );
+
             filteredBlogs = blogs.filter(blog =>
                 blog.slug !== (recentPost && recentPost.slug) && (
                     blog.title.toLowerCase().includes(q) ||
+                    blog.slug.toLowerCase().includes(q) ||
+                    (blog.category && blog.category.toLowerCase().includes(q)) ||
                     (blog.excerpt && blog.excerpt.toLowerCase().includes(q)) ||
                     (blog.tags && blog.tags.join(' ').toLowerCase().includes(q))
                 )
@@ -226,11 +242,12 @@
     }
 
     // Fetch data
-    fetch('data.json')
+    fetch(`${host}${endpoint}`)
         .then(res => res.json())
         .then(data => {
-            // Ambil artikel terbaru
-            const sorted = data.filter(item => item.published).sort((a, b) => b.created_at - a.created_at);
+            // console.log(data)
+            const { posts } = data
+            const sorted = posts.sort((a, b) => b.createdAt - a.createdAt);
             recentPost = sorted[0] || null;
             renderRecentPost();
             blogs = sorted.slice(1); // sisanya untuk daftar artikel
@@ -238,8 +255,4 @@
             loadFromURL();
             filterBlogs();
         });
-
-    // Pagination (sementara dikomentari)
-    // function paginate() { ... }
-    // ...
 })();

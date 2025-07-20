@@ -1,4 +1,7 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+    const host = "localhost:5000";
+    let endpoint = "";
+
     // Skrip untuk animasi fade-in
     const animatedElements = document.querySelectorAll('.fade-in-up');
     const observer = new IntersectionObserver((entries) => {
@@ -123,13 +126,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Skrip untuk render data 3 tulisan di index.html
     const recentArticlesContiner = document.getElementById('latest-articles-container');
-    if(recentArticlesContiner) {
-        fetch('data.json')
+    if (recentArticlesContiner) {
+        endpoint = "/api/posts";
+
+        fetch(`http://${host}${endpoint}`)
             .then(res => res.json())
             .then(data => {
-                data
-                    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-                    .filter(item => item.published)
+                data.posts
+                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                     .slice(0, 3)
                     .forEach(blog => {
                         let thumbHtml = '';
@@ -143,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </div>`;
                         }
                         let category = blog.category ? blog.category.toUpperCase() : 'UMUM';
-                        let html = `<a href="post-detail.html?slug=${blog.slug}" class="group block">
+                        let html = `<a href="post-detail.html?title=${blog.slug}" class="group block">
                             <div class="thumbnail-wrapper">${thumbHtml}</div>
                             <div class="content-wrapper">
                                 <span class="text-sm font-medium text-slate-500">${category}</span>
@@ -151,9 +155,10 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <p class="text-slate-600 text-sm mt-2 hidden">${blog.excerpt}</p>
                             </div>
                             </a>`;
-                recentArticlesContiner.innerHTML += html;
-            });
-        });
+                        recentArticlesContiner.innerHTML += html;
+                    });
+            })
+            .catch(err => console.error(err));
     }
 
     // Skrip untuk View Toggler di blog.html
@@ -204,14 +209,18 @@ document.addEventListener("DOMContentLoaded", function() {
     // Render post detail
     if (window.location.pathname.endsWith('post-detail.html')) {
         const params = new URLSearchParams(window.location.search);
-        const slug = params.get('slug');
+        const slug = params.get('title');
         if (!slug) {
             document.querySelector('main').innerHTML = '<div class="text-center py-20 text-xl">Post tidak ditemukan.</div>';
         } else {
-            fetch('data.json')
+            const host = "http://localhost:5000";
+            endpoint = "/api/posts/" + slug;
+
+            fetch(`${host}${endpoint}`)
                 .then(res => res.json())
                 .then(data => {
-                    const post = data.find(item => item.slug === slug && item.published);
+                    console.log(data);
+                    const { post } = data;
                     if (!post) {
                         document.querySelector('main').innerHTML = '<div class="text-center py-20 text-xl">Post tidak ditemukan.</div>';
                         return;
@@ -224,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         header.querySelector('span').textContent = post.category ? post.category.toUpperCase() : 'UMUM';
                         header.querySelector('h1').textContent = post.title;
                         // Tanggal
-                        const date = new Date(post.created_at);
+                        const date = new Date(post.createdAt);
                         const dateStr = date.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
                         header.querySelector('.text-slate-500').textContent = `Diterbitkan pada ${dateStr}`;
                     }
@@ -243,130 +252,124 @@ document.addEventListener("DOMContentLoaded", function() {
                     const footer = document.querySelector('article > footer .flex');
                     if (footer && post.tags) {
                         footer.innerHTML = '<span class="text-sm font-medium text-slate-600">Tags:</span>' +
-                            post.tags.map(tag => `<a href="#" class="text-sm bg-slate-100 text-slate-700 px-3 py-1 rounded-full hover:bg-slate-200 transition-colors">${tag}</a>`).join(' ');
+                            post.tags.map(tag => `<a href="/blog.html?q=${tag}" class="text-sm bg-slate-100 text-slate-700 px-3 py-1 rounded-full hover:bg-slate-200 transition-colors">${tag}</a>`).join(' ');
                     }
-                    // Fetch markdown dan render ke .article-content
-                    fetch(`posts/${slug}.md`)
-                        .then(res => res.text())
-                        .then(md => {
-                            const content = document.querySelector('.article-content');
-                            if (content) {
-                                content.innerHTML = marked.parse(md);
-                            }
-                        });
-                });
+                    const content = document.querySelector('.article-content');
+                    content.innerHTML = marked.parse(post.content);
+                })
+                .catch(err => console.error(err));
         }
     }
 
     // INTEGRASI FORM KONTAK GOOGLE SHEET
     const contactForm = document.forms['contact-form'];
 
-// Cek apakah form ada di halaman ini sebelum menjalankan skrip
-if (contactForm) {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzt54iJ4fwGDJEbR2ds7jIIXrlaaenojLz2-S-4sy1SGe5bv0LNviy_CYrV6Whw57k/exec';
-    const submitButton = document.getElementById('submit-button');
-    const originalButtonText = submitButton.innerHTML;
+    // Cek apakah form ada di halaman ini sebelum menjalankan skrip
+    if (contactForm) {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzt54iJ4fwGDJEbR2ds7jIIXrlaaenojLz2-S-4sy1SGe5bv0LNviy_CYrV6Whw57k/exec';
+        const submitButton = document.getElementById('submit-button');
+        const originalButtonText = submitButton.innerHTML;
 
-    const alertSuccess = document.getElementById('alert-success');
-    const alertDanger = document.getElementById('alert-danger');
+        const alertSuccess = document.getElementById('alert-success');
+        const alertDanger = document.getElementById('alert-danger');
 
-    // Menggunakan ID HTML untuk mengambil elemen, bukan nama atribut
-    const inputs = {
-        name: document.getElementById('nama'), // id="nama"
-        email: document.getElementById('email'),
-        message: document.getElementById('pesan')  // id="pesan"
-    };
+        // Menggunakan ID HTML untuk mengambil elemen, bukan nama atribut
+        const inputs = {
+            name: document.getElementById('nama'), // id="nama"
+            email: document.getElementById('email'),
+            message: document.getElementById('pesan')  // id="pesan"
+        };
 
-    const validationMessages = {
-        name: document.getElementById('nama-validation'),
-        email: document.getElementById('email-validation'),
-        message: document.getElementById('pesan-validation')
-    };
+        const validationMessages = {
+            name: document.getElementById('nama-validation'),
+            email: document.getElementById('email-validation'),
+            message: document.getElementById('pesan-validation')
+        };
 
-    // Fungsi untuk menampilkan error validasi
-    const showError = (field, message) => {
-        inputs[field].classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
-        validationMessages[field].textContent = message;
-        validationMessages[field].classList.remove('hidden');
-    };
+        // Fungsi untuk menampilkan error validasi
+        const showError = (field, message) => {
+            inputs[field].classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+            validationMessages[field].textContent = message;
+            validationMessages[field].classList.remove('hidden');
+        };
 
-    // Fungsi untuk membersihkan semua error validasi
-    const clearErrors = () => {
-        for (const field in inputs) {
-            inputs[field].classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
-            validationMessages[field].classList.add('hidden');
+        // Fungsi untuk membersihkan semua error validasi
+        const clearErrors = () => {
+            for (const field in inputs) {
+                inputs[field].classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+                validationMessages[field].classList.add('hidden');
+            }
+        };
+
+        // Fungsi untuk menampilkan notifikasi dan menyembunyikannya setelah 5 detik
+        const showAlert = (alertElement) => {
+            alertElement.classList.remove('hidden');
+            setTimeout(() => {
+                alertElement.classList.add('hidden');
+            }, 5000);
         }
-    };
 
-    // Fungsi untuk menampilkan notifikasi dan menyembunyikannya setelah 5 detik
-    const showAlert = (alertElement) => {
-         alertElement.classList.remove('hidden');
-         setTimeout(() => {
-            alertElement.classList.add('hidden');
-         }, 5000);
+        contactForm.addEventListener('submit', e => {
+            e.preventDefault();
+            clearErrors();
+            alertSuccess.classList.add('hidden');
+            alertDanger.classList.add('hidden');
+
+            // === VALIDASI LEBIH BAIK ===
+            let isValid = true;
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const nameRegex = /^[a-zA-Z\s'-]+$/;
+
+            // Validasi Nama
+            if (!inputs.name.value.trim()) {
+                showError('name', 'Nama wajib diisi.');
+                isValid = false;
+            } else if (!nameRegex.test(inputs.name.value)) {
+                showError('name', 'Format nama tidak valid (hanya huruf dan spasi).');
+                isValid = false;
+            }
+
+            // Validasi Email
+            if (!inputs.email.value.trim()) {
+                showError('email', 'Email wajib diisi.');
+                isValid = false;
+            } else if (!emailRegex.test(inputs.email.value)) {
+                showError('email', 'Format email tidak valid.');
+                isValid = false;
+            }
+
+            // Validasi Pesan
+            if (!inputs.message.value.trim()) {
+                showError('message', 'Pesan wajib diisi.');
+                isValid = false;
+            } else if (inputs.message.value.trim().length < 10) {
+                showError('message', 'Pesan minimal 10 karakter.');
+                isValid = false;
+            }
+            // === AKHIR VALIDASI ===
+
+            if (!isValid) {
+                return;
+            }
+
+            // Proses Pengiriman
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Mengirim...';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(contactForm) })
+                .then(response => {
+                    console.log('Success!', response);
+                    showAlert(alertSuccess);
+                    contactForm.reset();
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    showAlert(alertDanger);
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
+                });
+        });
     }
-
-    contactForm.addEventListener('submit', e => {
-        e.preventDefault();
-        clearErrors();
-        alertSuccess.classList.add('hidden');
-        alertDanger.classList.add('hidden');
-
-        // === VALIDASI LEBIH BAIK ===
-        let isValid = true;
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const nameRegex = /^[a-zA-Z\s'-]+$/;
-
-        // Validasi Nama
-        if (!inputs.name.value.trim()) {
-            showError('name', 'Nama wajib diisi.');
-            isValid = false;
-        } else if (!nameRegex.test(inputs.name.value)) {
-            showError('name', 'Format nama tidak valid (hanya huruf dan spasi).');
-            isValid = false;
-        }
-
-        // Validasi Email
-        if (!inputs.email.value.trim()) {
-            showError('email', 'Email wajib diisi.');
-            isValid = false;
-        } else if (!emailRegex.test(inputs.email.value)) {
-            showError('email', 'Format email tidak valid.');
-            isValid = false;
-        }
-
-        // Validasi Pesan
-        if (!inputs.message.value.trim()) {
-            showError('message', 'Pesan wajib diisi.');
-            isValid = false;
-        } else if (inputs.message.value.trim().length < 10) {
-            showError('message', 'Pesan minimal 10 karakter.');
-            isValid = false;
-        }
-        // === AKHIR VALIDASI ===
-
-        if (!isValid) {
-            return;
-        }
-
-        // Proses Pengiriman
-        submitButton.disabled = true;
-        submitButton.innerHTML = 'Mengirim...';
-
-        fetch(scriptURL, { method: 'POST', body: new FormData(contactForm) })
-            .then(response => {
-                console.log('Success!', response);
-                showAlert(alertSuccess);
-                contactForm.reset();
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
-                showAlert(alertDanger);
-            })
-            .finally(() => {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
-            });
-    });
-}
 });
