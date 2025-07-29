@@ -2,7 +2,7 @@
 (function() {
     if (!window.location.pathname.endsWith('blog.html')) return;
 
-    const host = 'http://localhost:5000';
+    const host = 'https://lostpeople.vercel.app';
     const endpoint = '/api/posts';
 
     let blogs = [];
