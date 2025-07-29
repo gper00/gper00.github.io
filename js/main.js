@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const host = "https://lostpeople.vercel.app";
+    const host = "lostpeople.vercel.app";
     let endpoint = "";
 
     // Skrip untuk animasi fade-in
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (recentArticlesContiner) {
         endpoint = "/api/posts";
 
-        fetch(`http://${host}${endpoint}`)
+        fetch(`https://${host}${endpoint}`)
             .then(res => res.json())
             .then(data => {
                 data.posts
@@ -213,7 +213,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!slug) {
             document.querySelector('main').innerHTML = '<div class="text-center py-20 text-xl">Post tidak ditemukan.</div>';
         } else {
-            const host = "https://lostpeople.vercel.app";
             endpoint = "/api/posts/" + slug;
 
             fetch(`${host}${endpoint}`)
