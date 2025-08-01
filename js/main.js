@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const host = "lostpeople.vercel.app";
+    const host = "https://lostpeople.vercel.app";
     let endpoint = "";
 
     // Skrip untuk animasi fade-in
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (recentArticlesContiner) {
         endpoint = "/api/posts";
 
-        fetch(`https://${host}${endpoint}`)
+        fetch(`${host}${endpoint}`)
             .then(res => res.json())
             .then(data => {
                 data.posts
