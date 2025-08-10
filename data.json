@@ -2,36 +2,29 @@
     {
         "title": "Hello, World!",
         "slug": "hello-world",
-        "excerpt": "Halo! Nama saya Umam Alfarizi, seorang mahasiswa Teknik Informatika yang sedang belajar mendalami dunia pemrograman. Blog ini adalah tempat saya mencurahkan ide, belajar menulis, dan sebagainya",
+        "excerpt": "Pengenalan singkat saja, hehe.",
         "category": null,
         "thumbnail": null,
-        "tags": [
-            "tentang saya",
-            "blog",
-            "tulisan"
-        ],
+        "tags": [],
         "published": true,
         "created_at": 1704039033325
     },
     {
-        "title": "Keuntungan Menjadi Programmer dan Pentingnya Sertifikasi IT",
-        "slug": "keuntungan-menjadi-programmer-dan-pentingnya-sertifikasi-it",
-        "excerpt": "Programmer memiliki peran penting di era teknologi dengan berbagai keuntungan, seperti peluang karir luas, gaji kompetitif, dan fleksibilitas kerja. Sertifikasi IT juga menjadi kunci untuk sukses dan tetap relevan di industri.",
-        "category": "coding",
-        "thumbnail": "https://res.cloudinary.com/do94gho7x/image/upload/v1723561395/uploads/posts/147e801b1ce7007a15ceb3b0ce77bdf4.jpg",
+        "title": "Kenapa Hidup Terasa Membosankan?",
+        "slug": "hidup-terasa-membosankan",
+        "excerpt": "Mengapa hidup terasa membosankan? Artikel ini mengupas tentang kebosanan dalam kehidupan modern, bagaimana menghadapinya, dan cara memaknai kebosanan sebagai sinyal untuk pertumbuhan diri.",
+        "category": "gaya hidup",
+        "thumbnail": "https://res.cloudinary.com/do94gho7x/image/upload/v1737503391/uploads/posts/ba07dd5551ae9c24ca46b51910c39dcc.jpg",
         "tags": [
-            "programmer",
-            "codepolitan",
-            "aliibabacloud",
-            "devhandal",
-            "campuscoder"
+            "kehidupan",
+            "refleksi"
         ],
-        "published": false,
-        "created_at": 1705395273452
+        "published": true,
+        "created_at": 1737502909836
     },
     {
         "title": "Puasa: Seni Mengendalikan Diri",
-        "slug": "puasa-seni-mengendalikan-diri",
+        "slug": "puasa-seni-mengenalikan-diri",
         "excerpt": "Ramadan bukan sekadar menahan lapar dan haus, tapi momen untuk latihan mengendalikan diri, membersihkan jiwa, dan menemukan makna hidup melalui Al-Qur'an. Mari jadikan Ramadan sebagai titik awal perubahan—menjadi pribadi yang lebih disiplin, sabar, dan bermakna",
         "category": "religi",
         "thumbnail": null,
@@ -39,9 +32,8 @@
             "ramadan",
             "puasa",
             "disiplin",
-            "alquran",
-            "takwa",
             "refleksi",
+            "puasa",
             "ketenangan"
         ],
         "published": true,
