@@ -1,4 +1,4 @@
-Halo kawan! Pernah nggak sih kamu ngerasa hidupmu seperti nggak karuan? Tanpa arah mungkin. Seperti bangun pagi, bekerja, pulang, lalu terus menerus mengulanginya lagi keesokan hari tanpa ada semacam perasaan mendapat sensasi pengalaman baru. Apa terasa membosankan? Apa sih sebenarnya yang membuat hidup kita terasa seperti itu? Yok kita bahas lebih dalam.
+Bro, pernah nggak sih kamu ngerasa hidupmu kayak nggak jelas gitu? Tak terarah, atau kayak monoton gitu? Seperti bangun pagi, bekerja/sekolah, pulang, lalu terus menerus mengulanginya lagi keesokan hari tanpa ada semacam perasaan mendapat sensasi pengalaman baru. Apa itu terasa membosankan? Apa sih sebenarnya yang membuat hidup kita terasa seperti itu? Lesgo kita bahas!
 
 ### **Mengapa Hidup Terasa Membosankan?**
 

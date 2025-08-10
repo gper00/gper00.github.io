@@ -1,4 +1,4 @@
-Hai, kamu, yang mungkin sering ngerasa nggak tenang, terombang-ambing, atau lagi nyari makna di balik rutinitas sehari-hari sama sepertiku. Ramadan ini mungkin bisa jadi jawabannya. Ramadan sebetulnya bukan cuma soal nahan lapar dan haus, tapi juga waktu yang tepat buat kita latihan mengontrol diri. 
+Halo bro. Buatmu yang mungkin dalem hati sering ngerasa nggak tenang, terombang-ambing, atau lagi nyari makna di balik rutinitas sehari-hari sama sepertiku. Ramadan ini mungkin bisa jadi jawabannya. Ramadan sebetulnya bukan cuma soal nahan lapar dan haus, tapi juga waktu yang tepat buat kita latihan mengontrol diri. 
 
 Yang ku maksud seperti kita bisa nahan diri dari hal-hal yang mungkin kedepannya tidak berdampak baik buat diri kita. Juga mungkin buat nyari ketenangan dari bisingnya sekeliling kita, atau buat nentuin arah hidup. Kita akan bahas gimana puasa bisa ngajarin kita seni mengendalikan diri.
 
